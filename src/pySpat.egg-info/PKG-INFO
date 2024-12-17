@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: pySpat
+Version: 0.0.1
+Summary: Python based spatial statistics package. Inspired by, and completely unaffiliated with, R's spatstat.
+Author-email: Jack Peyton <jpeyton01@qub.ac.uk>
+Project-URL: Homepage, https://github.com/j-peyton/pySpat
+Project-URL: Issues, https://github.com/j-peyton/pySpat/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENCE
+
+Work in progress project for spatial statistical methods under one python based roof.
