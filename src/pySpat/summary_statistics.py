@@ -1,6 +1,36 @@
 import numpy as np
-from scipy.spatial import cKDTree
+from scipy.spatial import cKDTree, KDTree
 from shapely.geometry import Point
+
+
+
+def calculate_rmax(points, method='bounding_box', k=5):
+    """
+        Calculate rmax for Ripley's K-function.
+
+        :param points: 2D NumPy array of point coordinates (shape: n x 2).
+        :param method: Method to determine rmax ('bounding_box' or 'nearest_neighbour').
+        :param k: Factor for nearest neighbor method.
+        :return: Calculated rmax value.
+        """
+    # Bounding box method
+    if method == 'bounding_box':
+        x_min, y_min = points.min(axis=0)
+        x_max, y_max = points.max(axis=0)
+        rmax = 0.5 * min(x_max - x_min, y_max - y_min)
+
+    # Nearest neighbor method
+    elif method == 'nearest_neighbour':
+        tree = KDTree(points)
+        distances, _ = tree.query(points, k=2)  # k=2 includes the point itself
+        mean_nn_distance = np.mean(distances[:, 1])  # Use 2nd column for nearest neighbor
+        rmax = k * mean_nn_distance
+
+    else:
+        raise ValueError("Invalid method. Use 'bounding_box' or 'nearest_neighbour'.")
+
+    return rmax
+
 
 
 def ripley_k(points, r):

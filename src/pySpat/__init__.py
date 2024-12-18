@@ -1,4 +1,4 @@
-version = "0.0.1"
+version = "0.0.2"
 
 from .simulation import (generate_cluster_points,
                          generate_poisson_points,
@@ -43,7 +43,8 @@ from .summary_statistics import (ripley_k,
                                  pair_correlation_function,
                                  nearest_neighbor_distance,
                                  density_estimate,
-                                 summary_statistics
+                                 summary_statistics,
+                                 calculate_rmax
                                  )
 
 from .point_pattern import (PointPattern,
@@ -58,4 +59,4 @@ __all__ = ["generate_cluster_points", "generate_stratified_points", "generate_po
            "plot_point_pattern", "fit_clustered_process", "simulate_random_patterns",
            "fit_stratified_process", "chi_square_test", "from_dataframe", "ripley_k",
            "ripley_l", "density_estimate", "pair_correlation_function", "summary_statistics",
-           "nearest_neighbor_distance", "PointPattern", "ObservationWindow"]
+           "nearest_neighbor_distance", "PointPattern", "ObservationWindow", "calculate_rmax"]
