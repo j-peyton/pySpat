@@ -22,9 +22,8 @@ def calculate_rmax(points, method='bounding_box', k=5):
     # Nearest neighbor method
     elif method == 'nearest_neighbour':
         tree = KDTree(points)
-        distances, _ = tree.query(points, k=2)  # k=2 includes the point itself
-        mean_nn_distance = np.mean(distances[:, 1])  # Use 2nd column for nearest neighbor
-        rmax = k * mean_nn_distance
+        distances, _ = tree.query(points, k=k+1)  # k=2 includes the point itself
+        rmax = np.mean(distances[:, 1:k+1])  # Use 2nd column for nearest neighbor
 
     else:
         raise ValueError("Invalid method. Use 'bounding_box' or 'nearest_neighbour'.")
