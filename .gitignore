@@ -8,10 +8,6 @@
 __pycache__/
 *.pyc
 
-# IGNORE R SPATSTAT
-spatstat/
-spatstat.*/
-
 # Distribution / packaging
 .Python
 build/
@@ -30,3 +26,5 @@ pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/
 .installed.cfg
+
+venv/
