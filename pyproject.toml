@@ -10,7 +10,7 @@ authors = [
     { name = "Jack Peyton", email = "jpeyton01@qub.ac.uk" }
 ]
 readme = "README.md"
-license = { text = "MIT", file = "LICENSE" }
+license = { file = "LICENCE" }
 requires-python = ">=3.8"
 dependencies = [
     "numpy"
