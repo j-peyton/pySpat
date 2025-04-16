@@ -3,20 +3,18 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pySpat"
-version = "0.0.3"
+name = "pyspat"
+version = "0.1.0"
+description = "Spatial point pattern analysis in Python, inspired by spatstat"
 authors = [
-    {name="Jack Peyton", email="jpeyton01@qub.ac.uk"}
+    { name = "Jack Peyton", email = "jpeyton01@qub.ac.uk" }
 ]
-description = "Python based spatial statistics package. Inspired by, and completely unaffiliated with, R's spatstat."
 readme = "README.md"
+license = { text = "MIT", file = "LICENSE" }
 requires-python = ">=3.8"
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
+dependencies = [
+    "numpy"
 ]
 
-[project.urls]
-Homepage = "https://github.com/j-peyton/pySpat"
-Issues = "https://github.com/j-peyton/pySpat/issues"
+[tool.setuptools.packages.find]
+where = ["pyspat"]
