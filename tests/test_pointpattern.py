@@ -15,8 +15,8 @@ Date: 2025-04-16
 
 import numpy as np
 import pytest
-from pyspat.core.window import Window
-from pyspat.core.pointpattern import PointPattern
+from pyspat import Window
+from pyspat import PointPattern
 
 
 def test_pointpattern_initialization():
