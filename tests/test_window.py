@@ -15,7 +15,7 @@ Date: 2025-04-16
 
 import numpy as np
 import pytest
-from core.window import Window
+from pyspat.core.window import Window
 
 
 def test_window_initialization_valid():
