@@ -66,9 +66,9 @@ def besag_l(pp: PointPattern, radii: np.ndarray) -> np.ndarray:
     return np.sqrt(k / np.pi)
 
 
-def pair_correlation(pp: PointPattern, radii: np.ndarray, dr: float) -> np.ndarray:
+def global_pcf(pp: PointPattern, radii: np.ndarray, dr: float) -> np.ndarray:
     """
-    Estimate the pair correlation function g(r).
+    Estimate the global pair correlation function g(r).
 
     Args:
         pp: A PointPattern object.
@@ -99,3 +99,37 @@ def pair_correlation(pp: PointPattern, radii: np.ndarray, dr: float) -> np.ndarr
         g_values.append(g)
 
     return np.array(g_values)
+
+
+def local_pcf(centre: tuple, points: np.ndarray, r_max: float, dr: float) -> tuple:
+    """
+    Compute the local pair correlation function (PCF) around a given center point.
+
+    Args:
+        centre: A tuple (x, y) representing the center point.
+        points: Nx2 numpy array of (x, y) coordinates.
+        r_max: Maximum radius to consider around the center point.
+        dr: Step size for r (bin width).
+
+    Returns:
+        Tuple (r_values, g_values):
+            r_values: 1D numpy array of bin centers
+            g_values: 1D numpy array of estimated g(r) values
+    """
+    if points.ndim != 2 or points.shape[1] != 2:
+        raise ValueError("points must be a 2D array with shape (N, 2)")
+
+    r_values = np.arange(dr / 2, r_max + dr / 2, dr)
+    g_values = []
+
+    diffs = points - np.array(centre)
+    dists = np.linalg.norm(diffs, axis=1)
+
+    for r in r_values:
+        mask = (dists > (r - dr / 2)) & (dists <= (r + dr / 2))
+        count = np.sum(mask)
+        shell_area = np.pi * ((r + dr / 2) ** 2 - (r - dr / 2) ** 2)
+        local_density = count / shell_area
+        g_values.append(local_density)
+
+    return r_values, np.array(g_values)

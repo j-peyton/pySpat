@@ -16,7 +16,7 @@ import numpy as np
 from pyspat import Window, PointPattern
 from pyspat.sim.csr import rpoispp
 from pyspat.plot.ppplot import plot_pp
-from pyspat.stats.summary import ripley_k, besag_l, pair_correlation
+from pyspat.stats.summary import ripley_k, besag_l, global_pcf
 
 
 def test_csr_pipeline():
@@ -37,7 +37,7 @@ def test_csr_pipeline():
     r = np.linspace(0.01, 0.2, 10)
     k = ripley_k(pp, r)
     l = besag_l(pp, r)
-    g = pair_correlation(pp, r, dr=0.01)
+    g = global_pcf(pp, r, dr=0.01)
 
     # Check output shapes
     assert k.shape == r.shape
