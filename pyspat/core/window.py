@@ -53,7 +53,12 @@ class Window:
         Returns:
             True if all points are inside the window, False otherwise.
         """
+        if points.size == 0:
+            return True  # or False, depending on design
+        if points.ndim != 2 or points.shape[1] != 2:
+            raise ValueError("Points array must be of shape (N, 2)")
         x, y = points[:, 0], points[:, 1]
+
         within_x = (self.x_range[0] <= x) & (x <= self.x_range[1])
         within_y = (self.y_range[0] <= y) & (y <= self.y_range[1])
         return np.all(within_x & within_y)
