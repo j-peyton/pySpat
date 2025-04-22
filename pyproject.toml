@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyspat"
-version = "0.1.2"
+version = "0.1.3"
 description = "Spatial point pattern analysis in Python, inspired by spatstat"
 authors = [
     { name = "Jack Peyton", email = "jpeyton01@qub.ac.uk" }
