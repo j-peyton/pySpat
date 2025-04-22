@@ -2,5 +2,15 @@
 from .core.pointpattern import PointPattern
 from .core.window import Window
 
+from . import stats
+from . import geom
+from . import plot
+from . import sim
+
+
 __all__ = ["PointPattern",
-           "Window"]
+           "Window",
+           "sim",
+           "geom",
+           "plot",
+           "stats",]
