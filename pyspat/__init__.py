@@ -13,4 +13,4 @@ __all__ = ["PointPattern",
            "sim",
            "geom",
            "plot",
-           "stats",]
+           "stats"]
